@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Category;
+use App\Models\tareas;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -99,6 +99,9 @@ class CategoriesController extends Controller
     public function destroy($categorid)
     {
         $category = Category::find($categorid);
+        $category-> tareas()->each(function($tareas){
+            $tareas-> delete();
+        });
         $category-> delete();
 
         return redirect()->route('categories.index')->with('success', 'Categoria Eliminada');

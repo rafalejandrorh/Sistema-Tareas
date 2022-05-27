@@ -24,11 +24,9 @@
         <div class="mb-3">
             <label for="tarea" class="form-label">Color de la categoría</label>
             <input type="color" class="form-control" name="color">
-          </div>
+        </div>
         <button type="submit" class="btn btn-primary">Actualiza categoría</button>
     </form>
-
-    </div>
 
     <div>
         @if ($category->tareas->count() > 0)
@@ -38,13 +36,14 @@
                 <a class="d-flex align-items-center gap-2" href="{{ route('app-edit', ['id' => $tareas->id]) }}">{{ $tareas->titulo }}</a>
             </div>
 
-                <div class="col-md-3 d-flex justify-content-end">
-                    <form action="{{ route('app-destroy', [$tareas->id]) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger btn-sm"> Eliminar </button>    
+            <div class="col-md-3 d-flex justify-content-end">
+                <form action="{{ route('categories.destroy', [$tareas->id]) }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button class="btn btn-danger btn-sm"> Eliminar </button>    
                 </form>
-                </div>
+            </div>
+
         </div>
         
             @endforeach
@@ -54,6 +53,7 @@
         No hay Tareas para esta categoría
 
         @endif
+    </div>
     </div>
 </div>
 
