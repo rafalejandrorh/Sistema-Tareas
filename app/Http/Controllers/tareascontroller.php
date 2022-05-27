@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\tareas;
 
@@ -14,14 +15,16 @@ class tareascontroller extends Controller
 
             $tarea = new tareas;
             $tarea->titulo = $request->titulo;
+            $tarea->category_id = $request->category_id;
             $tarea->save();
 
-            return redirect()->route('app')->with('success', 'Tarea creada correctamente');
+        return redirect()->route('app')->with('success', 'Tarea creada correctamente');
     }
 
     public function index(){
         $tareas = tareas::all();
-        return view('tareas.index', ['tareas' => $tareas]);
+        $categories = Category::all();
+        return view('tareas.index', ['tareas' => $tareas, 'categories' => $categories]);
     }
 
     public function show($id){

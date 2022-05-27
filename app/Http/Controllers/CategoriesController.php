@@ -101,6 +101,6 @@ class CategoriesController extends Controller
         $category = Category::find($categorid);
         $category-> delete();
 
-        return redirect()->route('app')->with('success', 'Categoria Eliminada');
+        return redirect()->route('categories.index')->with('success', 'Categoria Eliminada');
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             ->foreign('category_id')
             ->references('id')
             ->on('categories')
-            ->after('title');
+            ->after('titulo');
         });
     }
 
