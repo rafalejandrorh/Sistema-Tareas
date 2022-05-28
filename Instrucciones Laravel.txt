@@ -1,0 +1,104 @@
+Modelos y BBDD 4.4 - Relaciones
+
+Sistemas de Plantillas Laravel 5.4 - Comentarios y Estrucutra de Control
+
+PARA INSTALAR LARAVEL EN PROYECTO
+
+composer global require laravel/installer --- requerir composer y laravel en carpeta donde irá el proyecto ---
+ 
+laravel new example-app --- se crea el proyecto ---
+ 
+cd example-app --- se dirige a la carpeta del proyecto ---
+ 
+php artisan serve --- se inicia el servidor del proyecto ---
+
+------------------------------------------------------
+
+PARA MIGRAR PROYECTO EXISTENTE
+
+Se clona desde Github o donde se tenga
+
+composer install --- para instalar dependencias --- *Ó UTILIZAR* composer update --- para actualizar dependencias ---
+
+cp .env.example .env --- para gregar variables de entorno ---
+
+php artisan key:generate --- para generar clave y editar variables de entorno, es opcional y depende del proyecto ---
+
+nano.env ---para editar variables de entorno ---
+
+php artisan migrate --seed --- para migrar BBDD ---
+
+------------------------------------------------------
+
+COMANDOS IMPORTANTES
+
+php artisan --- Todos los comandos a utilizar ---
+
+php artisan route:list --- Para observar las rutas definidas, el tipo de operación que realizan y hacia donde 
+apuntan ---
+
+php artisan make:controller Apiexamplecontroller --api --- Para generar funciones de API ---
+
+php artisan make:controller examplecontroller --resource --- Para que cree por defecto una serie de funciones ---
+
+php artisan make:request StorexampleRequest --- Para crear un Request y poder colocar quién tiene autorización y
+cuáles son las reglas del request ---
+
+php artisan migrate --- Migrar BBDD al gestor ---
+
+php artisan make:migration create_posts_table --- Crear código para la migración ---
+
+php artisan migrate:rollback --- Para reversar una migración ---
+
+php artisan migrate:status --- Observar las migraciones realizadas y su estatus ---
+
+php artisan migrate:fresh ---  Migra todas las BBDD así se hayan migrado previamente ---
+
+php artisan make:migration update_table_category --table=examplename --- Se podrá crear
+un apartado para actualizar una tabla, ejemplo agregar columnas y luego correr migrate para que tome efecto los cambios ---
+
+php artisan make:model --- Creación de un modelo que interactuará con la BBDD ---   
+-c --- para crear con controlador ---
+
+------------------------------------------------------
+
+Routes: Se resuelvelas peticiones al navegador. Web para navegador, API para Json.
+
+Middlewares: Son clases que permitirán inspeccionar y filtrar solicitudes HTTP que se realicen a la aplicación. 
+Para utlizarlos por ejemplo, como autenticación se debe establecer la ruta de la variable en el kernel y posteriormente
+se establecen las Routes.
+
+Kernel: Posee todas las rutas de middlewares.
+
+Resources: En la parte de Views, se encontrarán las vistas de la aplicación
+
+Controllers: Separar responsabilidades de vistas y funciones según se requiera. Principalmente para organizar.
+php artisan make:controller ejemplocontroller --resource --- Para que cree por defecto una serie de funciones ---
+php artisan make:controller Apiexamplecontroller --api --- Para generar funciones de API ---
+
+Blade: Llamar variable o arreglo declarado = {{ $variable }}
+
+Request:
+Method --- para obtener el método de la consulta ---
+All --- para obtener arreglo de información ---
+is --- para enviar un enunciado
+input --- para obtener una variable en específico
+query --- para enviar varios datos vía URI y sean visualizados en un array
+boolean --- Dice si el valor es verdadero o falso (1-0) ---
+only --- Para específicar los valores a obtener ---
+except --- Para indicar que desea todos los valores menos el indicado ---
+has --- Para validar si un campo viene en la información (puede ser un arreglo también) ---
+filled --- Para validar si un campo viene vacío ---
+
+Response:
+header --- indicar valores de cabecera ---
+cookie --- enviar cookies y tiempo de validez ---
+
+Validaciones:
+Se pueden insertar directamente en la funcion sin embargo también se puede colocar en un Request aparte para que
+esté mejor estructurado. Se crea con: php artisan make:request StorexampleRequest
+
+Recomendaciones: 
+
+Segmentar funciones de los elementos que interactúan dentro de los proyectos
+

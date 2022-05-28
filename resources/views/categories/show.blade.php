@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-md-3 d-flex justify-content-end">
-                <form action="{{ route('categories.destroy', [$tareas->id]) }}" method="POST">
+                <form action="{{ route('app-destroy', [$tareas->id]) }}" method="POST">
                 @method('DELETE')
                 @csrf
                 <button class="btn btn-danger btn-sm"> Eliminar </button>    
@@ -45,12 +45,16 @@
             </div>
 
         </div>
-        
             @endforeach
 
         @else
 
-        No hay Tareas para esta categoría
+        <div class="row py-1">
+            <div class="col-md-9 d-flex align-items-center">
+                No hay Tareas para esta categoría
+            </div>
+        </div>
+        
 
         @endif
     </div>

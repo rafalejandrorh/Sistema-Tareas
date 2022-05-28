@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\tareascontroller;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,13 @@ Route::get('/', function () {
 });
 
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/register', [RegisterController::class, 'show']);
 
 //Rutas de Tareas
 Route::get('/app', function(){

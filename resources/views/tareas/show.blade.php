@@ -18,7 +18,7 @@
                   <label for="tarea" class="form-label">Título de la Tarea</label>
                   <input type="text" class="form-control" name="titulo" value="{{ $tareas->titulo }}">
                 </div>
-                <button type="submit" class="btn btn-primary">Crear nueva tarea</button>
+                <button type="submit" class="btn btn-primary">Actualizar tarea</button>
             </form>
 
     </div>
