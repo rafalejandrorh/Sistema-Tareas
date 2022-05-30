@@ -60,6 +60,8 @@ un apartado para actualizar una tabla, ejemplo agregar columnas y luego correr m
 php artisan make:model --- Creación de un modelo que interactuará con la BBDD ---   
 -c --- para crear con controlador ---
 
+php artisan make:request --- Autorizar una solicitud (Se guarda en la carpeta app/http/requests) ---
+
 ------------------------------------------------------
 
 Routes: Se resuelvelas peticiones al navegador. Web para navegador, API para Json.
