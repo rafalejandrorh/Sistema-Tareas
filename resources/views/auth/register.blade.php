@@ -7,6 +7,8 @@
 
             <form action="/register" method="POST">
                 @csrf
+                <b><h1>Registrate</h1></b>
+                @include('mensajes')
                 <div class="mb-3">
                 <label for="" class="form-label">Usuario</label>    
                 <input class="form-control" type="text" name="username">
@@ -28,8 +30,9 @@
                 </div>
 
                 <div class="mb-3"> 
-                <input class="form-control" type="submit" value="Registrarse">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </div>
+                <a href="/login">Haz click aquí para iniciar Sesión.</a>
 
             </form>
 

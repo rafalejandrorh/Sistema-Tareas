@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\tareascontroller;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+//Registrar Usuario
 Route::get('/register', function () {
     return view('auth.register');
 });
-
 Route::post('/register', [RegisterController::class, 'register']);
-
 Route::get('/register', [RegisterController::class, 'show']);
+
+//Inicio de Sesión
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'show']);
+
+//Cerrar Sesión
+Route::get('/logout', [LogoutController::class, 'logout']);
 
 //Rutas de Tareas
 Route::get('/app', function(){
