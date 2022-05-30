@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\tareas;
+use Illuminate\Support\Facades\Auth;
 
 class tareascontroller extends Controller
 {
@@ -22,6 +23,7 @@ class tareascontroller extends Controller
     }
 
     public function index(){
+        // Para enviar variable, aunque también se puede llamar directamente en la vista: Auth::user()->email;
         $tareas = tareas::all();
         $categories = Category::all();
         return view('tareas.index', ['tareas' => $tareas, 'categories' => $categories]);

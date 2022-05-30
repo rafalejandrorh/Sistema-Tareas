@@ -46,7 +46,7 @@ cuáles son las reglas del request ---
 
 php artisan migrate --- Migrar BBDD al gestor ---
 
-php artisan make:migration create_posts_table --- Crear código para la migración ---
+php artisan make:migration create_zzzz_ddd --- Crear código para la migración ---
 
 php artisan migrate:rollback --- Para reversar una migración ---
 

@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+@auth
 
     <div class="container w-25 border p-4">
             <form action="{{ route('app') }}" method="POST">
@@ -47,5 +48,9 @@
                 @endforeach
             </div>
     </div>
+@endauth
 
+@guest
+    <b><p>Inicia Sesión para ver el contenido.</p></b>
+@endguest
 @endsection

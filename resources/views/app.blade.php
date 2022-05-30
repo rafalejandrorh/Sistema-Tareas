@@ -11,8 +11,8 @@
 </head>
 <body>
 
-
     <nav class="navbar navbar-expand-lg bg-light">
+     
         <div class="container-fluid">
           <b><a class="navbar-brand" href="#">Aplicación de Tareas</a></b>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,14 +27,44 @@
                 <a class="nav-link" href="{{ route('categories.index')}}">Categorias</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
+
+            @auth
+            <div class="navbar-custom-menu">
+            <ul class="navbar-nav me-auto mb-5 mb-lg-0">
+            <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{auth()->user()->name ?? auth()->user()->username}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item">{{ auth()->user()->email }}</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+            </ul>
+            </li>
+            </ul>
+            </div>
+            @endauth
+
+            @guest
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Estás como invitado
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/login">Haz Click aquí para iniciar sesión</a></li>
+            </ul>
+            </li>
+            </ul>
+              @endguest
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+
         </div>
       </nav>
-
       @yield('content')
 </body>
 </html>
