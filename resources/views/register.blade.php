@@ -31,6 +31,8 @@
         </div>
       </nav>
 
+      <main class="form-container">
       @yield('content')
+    </main>
 </body>
 </html>
