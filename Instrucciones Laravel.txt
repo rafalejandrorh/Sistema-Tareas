@@ -12,6 +12,10 @@ cd example-app --- se dirige a la carpeta del proyecto ---
  
 php artisan serve --- se inicia el servidor del proyecto ---
 
+php artisan tinker --- Interactuar con las variables de entorno ---
+
+php artisan --env={se indica el entorno} tinker
+
 ------------------------------------------------------
 
 PARA MIGRAR PROYECTO EXISTENTE
