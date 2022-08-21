@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\SaveCategoryRequest;
 use App\Models\Category;
 use App\Models\tareas;
 use Illuminate\Http\Request;
@@ -26,7 +28,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -37,7 +39,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validated([
             'name' => 'required|unique:categories|max:255',
             'color' => 'required|max:7'
         ]);
@@ -46,6 +48,17 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->color = $request->color;
         $category->save();
+
+        // O //
+
+        // Category::create([
+        //     'name' => $request->input('name'),
+        //     'color' => $request->input('color'),
+        // ]);
+
+        // O //
+
+        // Category::create($validated);
 
         return redirect()->route('categories.index')->with('success', 'Nueva categoria agregada');
     }
@@ -80,12 +93,14 @@ class CategoriesController extends Controller
      * @param  int  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $categorid)
+    public function update(SaveCategoryRequest $request, $categorid)
     {
         $category = Category::find($categorid);
-        $category->name = $request->name;
-        $category->color = $request->color;
-        $category->save();
+        // O //
+        $category->update($request->validated());
+        // $category->name = $request->name;
+        // $category->color = $request->color;
+        // $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Categoria actualizada');
     }
@@ -106,5 +121,5 @@ class CategoriesController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Categoria Eliminada');
     }
-    
+
 }

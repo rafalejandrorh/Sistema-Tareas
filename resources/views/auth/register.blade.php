@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mb-3"> 
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
                 <a href="/login">Haz click aquí para iniciar Sesión.</a>
 
